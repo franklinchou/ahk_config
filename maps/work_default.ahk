@@ -78,10 +78,12 @@ GetWindowsOfProcess(process_name) {
 ; utility to get selected text (if any)
 GetSelectedText() {
   temp := ClipboardAll
+  Clipboard := ""
   Send ^c
   ClipWait, 0, 1
   selection := Clipboard
   Clipboard := temp
+  MsgBox s = %selection%
   Return, selection
 }
 
@@ -104,18 +106,21 @@ Return
     WinGetActiveTitle, active_title    
     selected := GetSelectedText()
     is_releasable := RegExMatch(selected, "Ready to be released|Timer still running")
-    ; match monthly view; 2 application windows
-    If(is_releasable && RegExMatch(active_title, "^Entries for") > 0) {
+    MsgBox %selected%
+    ; match weekly view, 1 application window
+    If (is_releasable && RegExMatch(active_title, "DTE Axiom") > 0) {
+      WinMove, 0, 0
+      MouseMove, 100, 460
+      DTEAppContextClick(4, 460)
+    ; match monthly view, 2 application windows
+    ; in this view, Ctrl + C does NOT copy the selected text
+    ; so `is_releasable` is useless
+    } Else If(RegExMatch(active_title, "^Entries for") > 0) {
       WinMove, 0, 0
       ; when figuring out how low to get the mouse to move aim for the area
       ; of the menu bar that says "Drag a column header here..."
       MouseMove, 100, 280
       DTEAppContextClick(4, 280)
-    ; match weekly view, 1 application window
-    } Else If (is_releasable && RegExMatch(active_title, "DTE Axiom") > 0) {
-      WinMove, 0, 0
-      MouseMove, 100, 460
-      DTEAppContextClick(4, 460)
     } Else {
       MsgBox Select releasable entry
       Return
