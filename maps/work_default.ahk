@@ -83,7 +83,6 @@ GetSelectedText() {
   ClipWait, 0, 1
   selection := Clipboard
   Clipboard := temp
-  MsgBox s = %selection%
   Return, selection
 }
 
