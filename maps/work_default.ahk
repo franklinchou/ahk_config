@@ -146,6 +146,13 @@ DTEAppContextClick(item_position, initial_mouse) {
   PrintScreen::AppsKey
 Return
 
+; Outlook
+; Ctrl + F maps to F4, note that this is IN MESSAGE;
+; Ctrl + E maps to searching in the mailbox (default; not modified)
+#If WinActive("ahk_class rctrl_renwnd32")
+
+Return
+
 ; This ridiculous keymapping is care of Lenovo
 ; which maps F12 to some bloatware keyboard manager utility
 #If WinActive("ahk_class OpusApp") || WinActive("ahk_class XLMAIN")
