@@ -147,10 +147,20 @@ DTEAppContextClick(item_position, initial_mouse) {
 Return
 
 ; Outlook
-; Ctrl + F maps to F4, note that this is IN MESSAGE;
-; Ctrl + E maps to searching in the mailbox (default; not modified)
+; remap Ctrl + F to find
 #If WinActive("ahk_class rctrl_renwnd32")
+  ^f::
+    WinGetActiveTitle, title
+    ; IN MESSAGE, Ctrl + F maps to F4
+    If (RegExMatch(title, " - Message") > 0) {
+      Send {F4}
+    } Else {
+      Send {~!e}
+    }
+    title := ""
 
+  ^e::
+    Return
 Return
 
 ; This ridiculous keymapping is care of Lenovo
