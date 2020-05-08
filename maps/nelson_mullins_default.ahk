@@ -6,11 +6,6 @@
 
 #Persistent 
 
-CapsLock::Ctrl
-LCtrl::Return
-; LCtrl::CapsLock
-PrintScreen::AppsKey
-
 
 ; SYSTEM ----------------------------------------------------------------------
 
