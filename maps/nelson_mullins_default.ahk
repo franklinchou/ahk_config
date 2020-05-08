@@ -143,6 +143,7 @@ Return
 
 #If WinActive("ahk_class XLMAIN")
   ^m::Send +{F2}
+Return
 
 ; This ridiculous keymapping is care of Lenovo
 ; which maps F12 to some bloatware keyboard manager utility
