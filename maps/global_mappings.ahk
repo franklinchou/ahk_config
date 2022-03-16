@@ -8,6 +8,8 @@
 
 #Persistent 
 
+SetCapsLockState, AlwaysOff
+
 CapsLock::Ctrl
 LCtrl::Return
 ; LCtrl::CapsLock
