@@ -10,7 +10,6 @@
 
 SetCapsLockState, AlwaysOff
 
-; HID identifiers are persistent
 selected_keyboard_hids := "HID\VID_0853&PID_0138\9&323F0D2&0&0000"
 
 connected_keyboard_devices := Array()
@@ -33,3 +32,4 @@ if is_selected_keyboard_attached := 0 {
 }
 
 ::fc.::franklin.chou@nelsonmullins.com
+::tyy::Thanks{!} {Enter} {Enter}Franklin
