@@ -32,4 +32,5 @@ if is_selected_keyboard_attached := 0 {
 }
 
 ::fc.::franklin.chou@nelsonmullins.com
-::tyy::Thanks{!} {Enter} {Enter}Franklin
+::plz::Please let us know if we can provide further assistance.
+::byy:: {Enter}{Enter}Best{,} {Enter}{Enter}Franklin
