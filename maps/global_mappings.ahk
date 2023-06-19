@@ -34,3 +34,7 @@ if is_selected_keyboard_attached := 0 {
 ::fc.::franklin.chou@nelsonmullins.com
 ::plz::Please let us know if we can provide further assistance.
 ::byy:: {Enter}{Enter}Best{,} {Enter}{Enter}Franklin
+::dd::
+	FormatTime, current_date, , yyyy_MM_dd
+	SendInput %current_date%{Space}_{Space}
+	Return
