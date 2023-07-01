@@ -13,7 +13,7 @@ SetCapsLockState, AlwaysOff
 selected_keyboard_hids := "HID\VID_0853&PID_0138\9&323F0D2&0&0000"
 
 connected_keyboard_devices := Array()
-for device in ComObjGet("winmgmts:").ExecQuery("Select * from Win32_PnPEntity") {	
+for device in ComObjGet("winmgmts:").ExecQuery("SELECT * FROM Win32_PnPEntity WHERE DeviceID = ''") {	
 	if InStr(device.name, "HID Keyboard Device") {
 		connected_keyboard_devices.Push(device.pnpdeviceid)
 	}
@@ -30,6 +30,9 @@ if is_selected_keyboard_attached := 0 {
 	CapsLock::Ctrl
 	PrintScreen::AppsKey
 }
+
+XButton1::PgDn
+XButton2::PgUp
 
 ::fc.::franklin.chou@nelsonmullins.com
 ::plz::Please let us know if we can provide further assistance.
