@@ -2,6 +2,10 @@
 
 This repo contains config files for Auto Hot Key on my windows distribution.
 
+## Device-aware Re-mapping
+Device information can be obtained from the Windows Management Instrumentation service by issuing WQL queries. 
+For example, at a Powershell prompt, execute the following: `Get-WmiObject -Query "SELECT * FROM Win32_PnPEntity"`
+
 ## Adding scripts to startup
 
 1. `shell:startup` in the Run dialog box (`Win + R`) will launch the startup applications folder
