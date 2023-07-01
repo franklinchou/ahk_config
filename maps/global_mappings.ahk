@@ -10,25 +10,31 @@
 
 SetCapsLockState, AlwaysOff
 
-selected_keyboard_hids := "HID\VID_0853&PID_0138\9&323F0D2&0&0000"
+; Note: Backslash in device IDs must be escaped (i.e., double backslash) 
+Is_Device_Attached(device_id) {
+	query_enum := ComObjGet("winmgmts:").ExecQuery(""
+		. "SELECT * FROM Win32_PnPEntity WHERE DeviceID='" . device_id . "'")		
+		._NewEnum()
 
-connected_keyboard_devices := Array()
-for device in ComObjGet("winmgmts:").ExecQuery("Select * from Win32_PnPEntity") {	
-	if InStr(device.name, "HID Keyboard Device") {
-		connected_keyboard_devices.Push(device.pnpdeviceid)
+	if query_enum[_] {
+		return 1
+	} else {
+		return 0
 	}
 }
 
-is_selected_keyboard_attached := 0
-for _, v in hid_keyboard_devices {
-	if InStr(selected_keyboard_hids, v) {
-		is_selected_keyboard_attached := 1	
-	}
-}
-
-if is_selected_keyboard_attached := 0 { 
+; If the Leopold Keyboard is not attached, switch the default ThinkPad layout
+leopold_keyboard_id := "HID\\VID_0853&PID_0138\\9&323F0D2&0&0000"
+If Is_Device_Attached(leopold_keyboard_id) = 0 {
 	CapsLock::Ctrl
 	PrintScreen::AppsKey
+}
+
+; If the Logitech Ergo mouse is attached, modify browser forward/back buttons
+logi_ergo_id := "ACPI\\LEN0302\\4&1B873C3E&0"
+If Is_Device_Attached(logi_ergo_id) = 1 {
+	XButton1::PgDn
+	XButton2::PgUp
 }
 
 ::fc.::franklin.chou@nelsonmullins.com
