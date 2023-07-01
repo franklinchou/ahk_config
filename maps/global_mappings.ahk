@@ -30,7 +30,7 @@ If Is_Device_Attached(leopold_keyboard_id) := 0 {
 	PrintScreen::AppsKey
 }
 
-; If the Logitech Ergo mouse is attached, swap the browser forward/back buttons
+; If the Logitech Ergo mouse is attached, modify browser forward/back buttons
 logi_ergo_id := "ACPI\\LEN0302\\4&1B873C3E&0"
 If Is_Device_Attached(logi_ergo_id) = 1 {
 	XButton1::PgDn
