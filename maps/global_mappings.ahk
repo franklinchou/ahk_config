@@ -25,7 +25,7 @@ Is_Device_Attached(device_id) {
 
 ; If the Leopold Keyboard is not attached, switch the default ThinkPad layout
 leopold_keyboard_id := "HID\\VID_0853&PID_0138\\9&323F0D2&0&0000"
-If Is_Device_Attached(leopold_keyboard_id) := 0 {
+If Is_Device_Attached(leopold_keyboard_id) = 0 {
 	CapsLock::Ctrl
 	PrintScreen::AppsKey
 }
