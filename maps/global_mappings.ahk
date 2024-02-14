@@ -3,12 +3,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Autohotkey configuration file
-; AHK Version v.1.1.34.03
+; AHK Version v.2.0.11
 ; Franklin Chou (franklin.chou@nelsonmullins.com)
 
-#Persistent 
+Persistent 
 
-SetCapsLockState, AlwaysOff
+SetCapsLockState "AlwaysOff"
 
 ; Note: Backslash in device IDs must be escaped (i.e., double backslash) 
 Is_Device_Attached(device_id) {
@@ -37,10 +37,16 @@ If Is_Device_Attached(logi_ergo_id) = 1 {
 	XButton2::PgUp
 }
 
+InsertDate() {
+	current_date := FormatTime(, "yyyy_MM_dd")
+	Send "%current_date%{Space}_{Space}"
+}
+
 ::fc.::franklin.chou@nelsonmullins.com
 ::plz::Please let us know if we can provide further assistance.
-::byy:: {Enter}{Enter}Best{,} {Enter}{Enter}Franklin
-::dd::
-	FormatTime, current_date, , yyyy_MM_dd
-	SendInput %current_date%{Space}_{Space}
+::byy::{Enter}{Enter}Best{,} {Enter}{Enter}Franklin
+::dd::{
+	current_date := FormatTime(, "yyyy_MM_dd")
+	SendInput "%current_date%{Space}_{Space}"
 	Return
+}
