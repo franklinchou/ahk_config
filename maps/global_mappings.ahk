@@ -37,16 +37,10 @@ If Is_Device_Attached(logi_ergo_id) = 1 {
 	XButton2::PgUp
 }
 
-InsertDate() {
-	current_date := FormatTime(, "yyyy_MM_dd")
-	Send "%current_date%{Space}_{Space}"
-}
-
 ::fc.::franklin.chou@nelsonmullins.com
 ::plz::Please let us know if we can provide further assistance.
 ::byy::{Enter}{Enter}Best{,} {Enter}{Enter}Franklin
-::dd::{
+::dd:: {
 	current_date := FormatTime(, "yyyy_MM_dd")
-	SendInput "%current_date%{Space}_{Space}"
-	Return
+	Send current_date "{Space}_{Space}"
 }
