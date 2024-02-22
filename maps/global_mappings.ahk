@@ -3,12 +3,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ; Autohotkey configuration file
-; AHK Version v.1.1.34.03
+; AHK Version v.2.0.11
 ; Franklin Chou (franklin.chou@nelsonmullins.com)
 
-#Persistent 
+Persistent 
 
-SetCapsLockState, AlwaysOff
+SetCapsLockState "AlwaysOff"
 
 ; Note: Backslash in device IDs must be escaped (i.e., double backslash) 
 Is_Device_Attached(device_id) {
@@ -16,9 +16,9 @@ Is_Device_Attached(device_id) {
 		. "SELECT * FROM Win32_PnPEntity WHERE DeviceID='" . device_id . "'")		
 		._NewEnum()
 
-	if query_enum[_] {
-		return 1
-	} else {
+	If query_enum(&device) {
+		return 1	
+	} Else {
 		return 0
 	}
 }
@@ -39,8 +39,8 @@ If Is_Device_Attached(logi_ergo_id) = 1 {
 
 ::fc.::franklin.chou@nelsonmullins.com
 ::plz::Please let us know if we can provide further assistance.
-::byy:: {Enter}{Enter}Best{,} {Enter}{Enter}Franklin
-::dd::
-	FormatTime, current_date, , yyyy_MM_dd
-	SendInput %current_date%{Space}_{Space}
-	Return
+::byy::{Enter}{Enter}Best{,} {Enter}{Enter}Franklin
+::dd:: {
+	current_date := FormatTime(, "yyyy_MM_dd")
+	Send current_date "{Space}_{Space}"
+}
