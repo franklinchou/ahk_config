@@ -16,9 +16,9 @@ Is_Device_Attached(device_id) {
 		. "SELECT * FROM Win32_PnPEntity WHERE DeviceID='" . device_id . "'")		
 		._NewEnum()
 
-	if query_enum[_] {
-		return 1
-	} else {
+	If query_enum(&device) {
+		return 1	
+	} Else {
 		return 0
 	}
 }
