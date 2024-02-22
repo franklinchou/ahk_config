@@ -44,3 +44,10 @@ If Is_Device_Attached(logi_ergo_id) = 1 {
 	current_date := FormatTime(, "yyyy_MM_dd")
 	Send current_date "{Space}_{Space}"
 }
+
+
+F1:: {
+	If WinActive("ahk_exe Teams.exe") {
+		MsgBox("here")
+	}
+}
